@@ -5,6 +5,7 @@ import LottieSplashScreen from 'react-native-lottie-splash-screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './pages/home';
+import ProductScreen from './pages/Product';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ function App(): JSX.Element {
             headerShown: false,
           }}>
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Product" component={ProductScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

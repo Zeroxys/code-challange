@@ -1,19 +1,31 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import PointsCard from '../Components/PointsCard';
 import MovementsList from '../Components/MovementsList';
+import apiFetch from '../helpers/apiFetch';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
+  const [data, setData] = useState([]);
+
+  const getProducts = async () => {
+    const res = await apiFetch('/products');
+    setData(res);
+  };
+
+  useEffect(() => {
+    getProducts();
+  });
+
   return (
     <View style={styles.content}>
-      <ScrollView style={styles.mainContent}>
+      <View style={styles.mainContent}>
         <View style={styles.profileCard}>
           <Text style={styles.profileWelcomeTitle}>Bienvenido de vuelta!</Text>
           <Text style={styles.profileName}>Miguel Zavala</Text>
         </View>
         <PointsCard />
-        <MovementsList />
-      </ScrollView>
+        <MovementsList navigation={navigation} movements={data} />
+      </View>
     </View>
   );
 };
@@ -23,7 +35,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: 'red',
-    margin: 20,
+    margin: 10,
   },
   mainContent: {
     borderWidth: 1,
