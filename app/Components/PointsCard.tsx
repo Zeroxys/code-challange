@@ -3,13 +3,33 @@ import {View, Text, StyleSheet} from 'react-native';
 import currencyFormat from '../helpers/currencyFormat';
 
 const PointsCard = ({totalPoints}) => {
+  const currentMonth = () => {
+    const months = [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Augosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ];
+    const date = new Date();
+    let month = months[date.getMonth()];
+    return month;
+  };
+
   return (
     <View style={styles.content}>
-      <View>
+      <View style={styles.pointsWrapper}>
         <Text style={styles.profileWelcomeTitle}>Tus puntos</Text>
         <View style={styles.card}>
-          <View style={styles.textContent}>
-            <Text style={styles.monthText}>Diciembre</Text>
+          <View>
+            <Text style={styles.monthText}>{currentMonth()}</Text>
             <Text style={styles.mountText}>
               {currencyFormat(totalPoints)} pts
             </Text>
@@ -24,21 +44,28 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: 'red',
-    margin: 20,
+    marginTop: 20,
   },
-  textContent: {
-    height: '50%',
-    padding: 20,
-    justifyContent: 'space-between',
+  pointsWrapper: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   profileWelcomeTitle: {
-    fontWeight: '900',
+    fontWeight: '700',
+    color: '#9B9898',
+    fontSize: 16,
+    width: '100%',
+    textAlign: 'left',
+    marginBottom: 20,
   },
   monthText: {
+    width: '100%',
     fontSize: 16,
     fontWeight: '700',
     color: 'white',
+    textAlign: 'left',
+    marginBottom: 7,
   },
   mountText: {
     fontSize: 32,
@@ -51,6 +78,8 @@ const styles = StyleSheet.create({
     width: 286,
     borderRadius: 20,
     backgroundColor: '#334FFA',
+    justifyContent: 'center',
+    alignItems: 'center',
     shadowColor: '#00000080',
     shadowOffset: {width: 0, height: 5},
     shadowOpacity: 1,

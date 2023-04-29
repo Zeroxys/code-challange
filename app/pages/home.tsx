@@ -70,23 +70,27 @@ const HomeScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.content}>
-      <View style={styles.mainContent}>
-        <View style={styles.profileCard}>
-          <Text style={styles.profileWelcomeTitle}>Bienvenido de vuelta!</Text>
-          <Text style={styles.profileName}>Miguel Zavala</Text>
-        </View>
-        <PointsCard totalPoints={totalPoints} />
-        <MovementsList navigation={navigation} movements={data} />
-        <View style={styles.filtersContent}>
-          <Button onPress={allFilter} text="Todos" width={'100%'} />
-          <View style={styles.filtersSmalls}>
-            <Button onPress={onlyWinnerFilter} text="Ganados" width={170} />
-            <Button onPress={redeemedFilter} text="Canjeados" width={170} />
+    <ScrollView>
+      <View style={styles.content}>
+        <View style={styles.mainContent}>
+          <View>
+            <Text style={styles.profileWelcomeTitle}>
+              Bienvenido de vuelta!
+            </Text>
+            <Text style={styles.profileName}>Miguel Zavala</Text>
+          </View>
+          <PointsCard totalPoints={totalPoints} />
+          <MovementsList navigation={navigation} movements={data} />
+          <View style={styles.filtersContent}>
+            <Button onPress={allFilter} text="Todos" width={'100%'} />
+            <View style={styles.filtersSmalls}>
+              <Button onPress={onlyWinnerFilter} text="Ganados" width={170} />
+              <Button onPress={redeemedFilter} text="Canjeados" width={170} />
+            </View>
           </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -94,26 +98,23 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: 'red',
     margin: 10,
   },
   mainContent: {
-    borderWidth: 1,
-    borderColor: 'red',
     height: '100%',
     width: '100%',
   },
-  profileCard: {
-    borderWidth: 1,
-  },
   profileWelcomeTitle: {
     fontWeight: '900',
+    fontSize: 20,
   },
   profileName: {
     fontWeight: '400',
+    fontSize: 16,
   },
   filtersContent: {
     width: '100%',
+    marginTop: 20,
   },
   filtersSmalls: {
     width: '100%',

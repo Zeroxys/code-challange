@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import {
   View,
   Text,
@@ -29,15 +29,26 @@ const Product = ({image, product, createdAt, points, is_redemption}) => {
   );
 };
 const MovementsList = ({movements, navigation}) => {
+  const flatListRef = useRef(null);
   const navigateTo = item => {
     navigation.navigate('Product', item);
   };
+
+  useEffect(() => {
+    toTop();
+  }, [movements]);
+
+  const toTop = () => {
+    flatListRef.current.scrollToOffset({animated: true, offset: 0});
+  };
+
   return (
     <View style={styles.content}>
       <View>
         <Text style={styles.profileWelcomeTitle}>Tus Movimientos</Text>
         <View style={styles.scrollContent}>
           <FlatList
+            ref={flatListRef}
             data={movements}
             renderItem={movement => {
               return (
@@ -59,14 +70,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: 'red',
-    margin: 20,
+    marginTop: 20,
   },
   scrollContent: {
     height: 350,
   },
   profileWelcomeTitle: {
-    fontWeight: '900',
+    fontWeight: '700',
     color: '#9B9898',
+    fontSize: 16,
+    marginBottom: 20,
   },
   productItem: {
     flexDirection: 'row',
