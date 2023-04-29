@@ -61,7 +61,6 @@ const HomeScreen = ({navigation}) => {
   };
 
   const onlyWinnerFilter = () => {
-    console.warn('all');
     sortForWinnerProducts(true);
   };
 
@@ -115,6 +114,7 @@ const styles = StyleSheet.create({
   filtersContent: {
     width: '100%',
     marginTop: 20,
+    marginBottom: 40,
   },
   filtersSmalls: {
     width: '100%',

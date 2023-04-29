@@ -23,8 +23,8 @@ const Product = ({image, product, createdAt, points, is_redemption}) => {
           {is_redemption ? '+' : '-'}
         </Text>
         <Text style={styles.points}>{points}</Text>
+        <Text style={styles.arrow}>{'>'}</Text>
       </View>
-      <Text style={styles.arrow}>{'>'}</Text>
     </View>
   );
 };
@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
   productItem: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     margin: 5,
   },
   tinyLogo: {
@@ -92,7 +93,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   descriptionContent: {
-    marginLeft: 16,
     justifyContent: 'space-around',
   },
   productName: {
@@ -106,8 +106,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   pointsContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
     flexDirection: 'row',
   },
   points: {

@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  StatusBar,
+} from 'react-native';
 import formatDate from '../helpers/dateFormat';
 import Button from '../Components/Button';
 
@@ -16,18 +23,19 @@ const ProductScreen = ({navigation, route: {params}}) => {
         <Text style={styles.productTitle}>{product}</Text>
       </View>
       <View style={styles.productContent}>
-        <View></View>
         <Image style={styles.productImage} source={{uri: image}} />
       </View>
-      <View>
-        <Text style={styles.profileWelcomeTitle}>Detalles del producto</Text>
-        <Text>Comprado el {formatDate(createdAt)}</Text>
+      <View style={styles.productInfoContent}>
+        <Text style={styles.profileWelcomeTitle}>Detalles del producto:</Text>
+        <Text style={styles.buyDate}>Comprado el {formatDate(createdAt)}</Text>
         <Text style={styles.profileWelcomeTitle}>
           Con esta compra acumulaste:
         </Text>
-        <Text>{points} puntos</Text>
+        <Text style={styles.points}>{points} puntos</Text>
       </View>
-      <Button onPress={navigateTo} />
+      <View style={styles.button}>
+        <Button width={'100%'} onPress={navigateTo} />
+      </View>
     </ScrollView>
   );
 };
@@ -50,10 +58,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  productInfoContent: {
+    height: 300,
+  },
   productTitle: {
     fontSize: 24,
     fontWeight: '700',
-    textAlign: 'center',
+    textAlign: 'left',
+    marginBottom: 24,
   },
   productImage: {
     width: 200,
@@ -61,9 +73,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   profileWelcomeTitle: {
-    fontWeight: '900',
+    fontWeight: '700',
     color: '#9B9898',
+    marginTop: 32,
   },
+  buyDate: {
+    fontWeight: '700',
+    fontSize: 16,
+    marginTop: 19,
+  },
+  points: {
+    fontWeight: '700',
+    fontSize: 24,
+    marginTop: 32,
+  },
+  button: {marginBottom: 40},
 });
 
 export default ProductScreen;
