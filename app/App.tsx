@@ -4,8 +4,8 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import LottieSplashScreen from 'react-native-lottie-splash-screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from './pages/home';
-import ProductScreen from './pages/Product';
+import HomeScreen from './pages/HomeScreen';
+import ProductScreen from './pages/ProductScreen';
 
 const Stack = createNativeStackNavigator();
 
