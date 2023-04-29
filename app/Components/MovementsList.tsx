@@ -7,18 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-
-const formatDate = date => {
-  const dateIso = new Date(date);
-  const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
-
-  return dateIso.toLocaleDateString('es-ES', options).split(',')[1];
-};
+import formatDate from '../helpers/dateFormat';
 
 const Product = ({image, product, createdAt, points, is_redemption}) => {
   const redemptionColor = is_redemption ? '#00B833' : '#FF0000';
@@ -100,7 +89,7 @@ const styles = StyleSheet.create({
     marginBottom: 7,
   },
   productDate: {
-    weight: '400',
+    fontWeight: '400',
     fontSize: 12,
   },
   pointsContainer: {

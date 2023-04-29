@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import currencyFormat from '../helpers/currencyFormat';
 
-const PointsCard = () => {
+const PointsCard = ({totalPoints}) => {
   return (
     <View style={styles.content}>
       <View>
@@ -9,7 +10,9 @@ const PointsCard = () => {
         <View style={styles.card}>
           <View style={styles.textContent}>
             <Text style={styles.monthText}>Diciembre</Text>
-            <Text style={styles.mountText}>10,000</Text>
+            <Text style={styles.mountText}>
+              {currencyFormat(totalPoints)} pts
+            </Text>
           </View>
         </View>
       </View>
@@ -35,7 +38,6 @@ const styles = StyleSheet.create({
   monthText: {
     fontSize: 16,
     fontWeight: '700',
-    lineHeight: 22,
     color: 'white',
   },
   mountText: {
